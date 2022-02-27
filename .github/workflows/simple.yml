@@ -2,13 +2,22 @@ name: Shell Commands
 
 on: [push]
 
-jobs:
-  run-shell-command:
-    runs-on: ubuntu-latest
+
+jobs: #Simple job
+  run-shell-command: # 
+    runs-on: ubuntu-latest  
     steps:
-      - name: echo a String
+      - name: echo a String  # Single line command as a step
         run: echo "Hello World"
-      - name: Multiline script
+        shell: bash # optional if not provided uses default shell.
+      - name: Multiline script # Multiple line command as a step
         run: |
           node -v
           npm -v
+      - name: python command # using different shell
+        run: |
+          import platform
+          print
+          (platform.processor())
+        shell: python
+      
