@@ -21,7 +21,7 @@ jobs: #Simple job
         shell: python
   run-windows-commands: # runs on windows latest
     runs-on: windows-latest
-      steps:
+    steps:
         - name: Show Directory in Powershell
           run: Get-Location
         - name: Directory Bash
