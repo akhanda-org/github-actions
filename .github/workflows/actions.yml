@@ -15,8 +15,13 @@ jobs:
         run: echo  "${{steps.greet.outputs.time}}" # 3. refering outputs
     
       - name: Checkout
-        uses: actions/checkout@v1
-      - name: List Files
+        uses: actions/checkout@v1 #4.Checkout action- it simplifiles checkouting current repositlry
+      - name: List Files & Enviornement #verify env variables
         run: |
           pwd
-          ls -a
+          ls -a  
+          echo $GITHUB_SHA
+          echo $GITHUB_REPOSITORY
+          echo $GITHUB_WORKSPACE
+          echo "${{github.token}}"
+
