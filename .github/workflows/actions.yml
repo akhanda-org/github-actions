@@ -13,8 +13,10 @@ jobs:
           who-to-greet: John   #2. input to action
       - name: Log Greeting Time
         run: echo  "${{steps.greet.outputs.time}}" # 3. refering outputs
+    
+      - name: Checkout
+        uses: actions/checkout@v1
       - name: List Files
         run: |
           pwd
           ls -a
-          
