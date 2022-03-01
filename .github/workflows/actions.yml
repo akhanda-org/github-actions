@@ -3,7 +3,7 @@ name: Actions WorkFlow
 on: [push]
 
 jobs:
-  run-github-actions:
+  run-github-actions: # Github Actions market place https://github.com/marketplace?type=actions
     runs-on: ubuntu-latest
     steps:
       - name: Sipmle Javascript Action
@@ -20,6 +20,7 @@ jobs:
         run: |
           pwd
           ls -a  
+          echo "Github Variables..."
           echo $GITHUB_SHA
           echo $GITHUB_REPOSITORY
           echo $GITHUB_WORKSPACE
