@@ -1,0 +1,15 @@
+name: Actions WorkFlow
+
+on: [push]
+
+jobs:
+  run-github-actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sipmle Javascript Action
+        id: greet #3. ID to a step, helps to refer in other steps
+        uses: actions/hello-world-javascript-action@v1 # 1.actions from github repository
+        with:
+          who-to-greet: John   #2. input to action
+      - name: Log Greeting Time
+        run: echo  "${{steps.greet.outputs.time}}" # 3. refering outputs
