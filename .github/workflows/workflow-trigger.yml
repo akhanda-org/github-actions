@@ -1,0 +1,13 @@
+name: Trigger WorkFlow #https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows
+
+on: 
+  push:
+  pull_request:
+    types: [opened, assigned, closed, reopened]
+    
+jobs:
+  run-echo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo 
+        run: echo "Workflow Ran"
