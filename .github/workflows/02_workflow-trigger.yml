@@ -1,0 +1,15 @@
+name: Trigger WorkFlow #https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows
+
+on: 
+  schedule:
+    - cron: "0/5 * * * *" #2. you can schedule the job around this.
+    - cron: "0/6 * * * *"
+  pull_request:
+    types: [opened, assigned, closed, reopened] #1. on specific activity on events trigger this workflow
+    
+jobs:
+  run-echo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo 
+        run: echo "Workflow Ran"
