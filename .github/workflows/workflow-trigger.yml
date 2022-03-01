@@ -1,0 +1,6 @@
+name: WorkFlow Trigger
+
+on: 
+  push:
+  pull_request:
+    types: [opened, assigned, closed, reopened]
