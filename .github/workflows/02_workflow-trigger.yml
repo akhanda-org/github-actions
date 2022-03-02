@@ -6,8 +6,14 @@ on:
 #  schedule:
 #    - cron: "0/5 * * * *" #2. you can schedule the job around this.
 #    - cron: "0/6 * * * *"
-  repository_dispatch:
-    
+  repository_dispatch: # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#repository_dispatch
+    types: [build]
+# POST: https://api.github.com/repos/akhanda-org/githubactions/dispatches
+# {
+#    "event_type":"build"
+#  }
+# send Authoraiztion header as a Basic Auth and password or as a bearer token
+
 jobs:
   run-echo:
     runs-on: ubuntu-latest
