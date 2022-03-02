@@ -1,9 +1,11 @@
 name: ENV Variables
+# 1. Environment variables can be created at workflow level, job level, step level
+# 2. pass environment variables through secrets defined in Github repo settings
 
 on: push
 env: 
   WF_ENV: Available to all jobs
-
+  WF_ENV_SECRET: ${{secrets.WF_ENV}}
 jobs:
   log-env:
     runs-on: ubuntu-latest
@@ -17,9 +19,10 @@ jobs:
           echo "WF_ENV: ${WF_ENV}"
           echo "JOB_ENV ${JOB_ENV}"
           echo "STEP_ENV: ${STEP_ENV}"
+          echo "WF_SECRETS_ENV: ${WF_ENV_SECRET}"
       - name: Log Env 2
         run:  |
-          echo "WF_ENV: ${EF_ENV}"
+          echo "WF_ENV: ${WF_ENV}"
           echo "JOB_ENV ${JOB_ENV}"
           echo "STEP_ENV: ${STEP_ENV}"
   log-default-env:
