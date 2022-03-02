@@ -8,15 +8,15 @@ on:
   push:
     branches: # 4. we can filter by branches.
       - main
-      - 'feature/*' # matches feature/featA, feature, but dont match feature/featA/test
-      - 'feature/**' # matches even sub categories
-      - '!feature/featC' # ignores this branch push
+  #    - 'feature/*' # matches feature/featA, feature, but dont match feature/featA/test
+  #    - 'feature/**' # matches even sub categories
+  #    - '!feature/featC' # ignores this branch push
 #   branches-ignore:  # either branches or branches-ignore need to define
 #     - develop
-    tags: # same as branches
-       - v1.*
-    paths: # same as branches and tags
-      - "*.*"
+  #  tags: # same as branches
+    #   - v1.*
+  #  paths: # same as branches and tags
+    #  - "*.*"
 #  schedule:
 #    - cron: "0/5 * * * *" #2. you can schedule the job around this.
 #    - cron: "0/6 * * * *"
