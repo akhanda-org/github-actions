@@ -2,19 +2,34 @@ name: Trigger WorkFlow #https://docs.github.com/en/actions/using-workflows/event
 
 on: 
   pull_request:
+    branches:
+      - main
     types: [opened, assigned, closed, reopened] #1. on specific activity on events trigger this workflow
+  push:
+    branches: # 4. we can filter by branches.
+      - main
+      - 'feature/*' # matches feature/featA, feature, but dont match feature/featA/test
+      - 'feature/**' # matches even sub categories
+      - '!feature/featC' # ignores this branch push
+#   branches-ignore:  # either branches or branches-ignore need to define
+#     - develop
+    tags: # same as branches
+       - v1.*
+    paths: # same as branches and tags
+      - "*.*"
 #  schedule:
 #    - cron: "0/5 * * * *" #2. you can schedule the job around this.
 #    - cron: "0/6 * * * *"
   repository_dispatch: # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#repository_dispatch
     types: [build]
-# 3. Example 1: with event type "build"
+# 3. Trigger Workflow manually by http request
+#Example 1: with event type "build"
 # POST: https://api.github.com/repos/akhanda-org/githubactions/dispatches
 # {
 #    "event_type":"build"
 #  }
 # send Authoraiztion header as a Basic Auth and password or as a bearer token
-# 4. Example 2: request dispatch with payload
+# 4. Example 2: request dispatch with payload <check payload step>
 #{
 #    "event_type":"build",
 #    "client_payload": {
