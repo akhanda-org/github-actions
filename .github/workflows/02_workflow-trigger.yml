@@ -15,14 +15,14 @@ on:
 #  }
 # send Authoraiztion header as a Basic Auth and password or as a bearer token
 # 4. Example 2: request dispatch with payload
-# {
-#    "event_type":"build"
+#{
+#    "event_type":"build",
 #    "client_payload": {
 #        "unit":false,
 #        "integration": 1,
-#        "date": 2021-10-10
+#        "date": "2018-12-10T13:45:00.000Z"
 #    }
-# }
+#}
 jobs:
   run-echo:
     runs-on: ubuntu-latest
