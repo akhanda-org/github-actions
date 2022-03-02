@@ -8,15 +8,26 @@ on:
 #    - cron: "0/6 * * * *"
   repository_dispatch: # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#repository_dispatch
     types: [build]
+# 3. Example 1: with event type "build"
 # POST: https://api.github.com/repos/akhanda-org/githubactions/dispatches
 # {
 #    "event_type":"build"
 #  }
 # send Authoraiztion header as a Basic Auth and password or as a bearer token
-
+# 4. Example 2: request dispatch with payload
+# {
+#    "event_type":"build"
+#    "client_payload": {
+#        "unit":false,
+#        "integration": 1,
+#        "date": 2021-10-10
+#    }
+# }
 jobs:
   run-echo:
     runs-on: ubuntu-latest
     steps:
       - name: Echo 
         run: echo "Workflow Ran"
+      - name: payload
+        run : echo ${{ github.event.client_payload.date}}
