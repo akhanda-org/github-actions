@@ -1,7 +1,7 @@
 name: ENV Variables
 # 1. Environment variables can be created at workflow level, job level, step level
 # 2. pass environment variables through secrets defined in Github repo settings
-
+# 3. update random.txt and push to the browser
 on: push
 env: 
   WF_ENV: Available to all jobs
@@ -51,5 +51,30 @@ jobs:
             "body": "This issue was automatically created by the GitHub Action workflow **${{ github.workflow }}**. \n\n The commit hash was: _${{ github.sha }}_."
             }' \
           --fail
+      - name: Push a random file
+        run: |
+          pwd
+          ls -a
+          git init
+          git remote add origin "https://$GITHUB_ACTOR:${{secrets.GITHUB_TOKEN}}@github.com/$GITHUB_REPOSITORY.git"
+          git config --global user.email "my-bot@bot"
+          git config --global user.name "my-bot"
+          git fetch
+          git checkout main
+          git branch --set-upstream-to=orgin/master
+          git pull
+          ls -a
+          echo $RANDOM >> random.txt
+          git add -A
+          git commmit -m"Random file"
+          git push
+
+
+
+
+
+
+
+  
 
         
