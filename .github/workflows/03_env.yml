@@ -39,6 +39,7 @@ jobs:
     runs-on: ubuntu-latest 
     permissions:
       issues: write 
+      contents: write
     steps:
       - name: 2. Create issue using REST API
         run: |
