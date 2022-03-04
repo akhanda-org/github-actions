@@ -18,10 +18,10 @@ jobs:
       matrix:
         os: [windows-latest,macos-latest,ubuntu-latest]
         node-version: [6,8,10] # an array of options 
-        include:
+        include: # used to modify any existing combination
           - os: ubuntu-latest
-            node-version: 10
-        exclude:
+            node-version: 14
+        exclude:  #used to exclude any combination
           - os: ubuntu-latest
             node-version: 8
           - os: macos-latest
