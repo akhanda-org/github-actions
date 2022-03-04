@@ -33,14 +33,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: First job continues on error
+        run: eccho 'this will fail'
         continue-on-error: true
-      - run: eccho 'this will fail'
   timeout-eror-job:
     runs-on: ubuntu-latest
+    timeout-minutes: 1
     steps:
       - name: this will timeout
         run: sleep 70
-        timeout-minutes: 1
   dump_contexts_to_log:
     runs-on: ubuntu-latest
     steps:
