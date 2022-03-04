@@ -26,6 +26,6 @@ jobs:
         run: node -v 
       - uses: actions/setup-node@v2
         with:
-          node-version: ${{matrxi.node_version}}
+          node-version: ${{matrix.node_version}}
       - name: Log Node node version
         run: node -v 
