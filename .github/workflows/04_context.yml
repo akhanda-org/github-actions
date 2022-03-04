@@ -10,6 +10,11 @@ jobs:
         run: |
           echo ${{ contains( 'hello','ll') }}
           echo ${{ format('Hello {0} {1} {2}', 'World','!','!') }}
+  failing_job:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Fail the job
+          run: eecho
   on_push:
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
@@ -17,11 +22,7 @@ jobs:
       - name: runs on push
         run: echo 'This runs on only push'
 
-  failing_job:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Fail the job
-          run: eecho
+
   fallback_job:
       if: failure()
       runs-on: ubuntu-latest
