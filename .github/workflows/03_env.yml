@@ -2,6 +2,7 @@ name: ENV Variables
 # 1. Environment variables can be created at workflow level, job level, step level
 # 2. pass environment variables through secrets defined in Github repo settings
 # 3. update random.txt and push to the browser
+# 4. Encryption and Decryption for secret files.
 on: push
 env: 
   WF_ENV: Available to all jobs
@@ -53,6 +54,7 @@ jobs:
             }' \
           --fail
       - name: Push a random file
+        if: fasle
         run: |
           pwd
           ls -a
