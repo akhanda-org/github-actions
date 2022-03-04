@@ -12,4 +12,20 @@ jobs:
         with:
           node-version: '14'
       - name: Log Node node version
-        run: node -v     
+        run: node -v 
+  node-version-matrix:
+    strategy:
+      matrix:
+        os: [windows-latest,macos-latest,ubuntu-latest]
+        node-version: [6,8,10] # an array of options 
+      max-parallel: 2 # number of jobs running in parallel
+      fail-fast: true
+    runs-on: ${{matrix.os}}
+    steps:
+      - name: Log Node node version
+        run: node -v 
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{matrxi.node_version}}
+      - name: Log Node node version
+        run: node -v 
