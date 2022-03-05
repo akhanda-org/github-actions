@@ -36,12 +36,12 @@ jobs:
       - name: Log Container nobe version
         run: node -v
       - name: Step with Docker
-        uses: docker://node:12.4.1-alpine3.10
+        uses: docker://node:12.22.10-alpine3.14
         with:
           entrypoint: /bin/echo
           args: "Hello World"
       - name: Log nnode version
-        uses: docker://node:12.4.1-alpine3.10
+        uses: docker://node:112.22.10-alpine3.14
         with:
           entrypoint: /usr/local/bin/node
           args: -v
