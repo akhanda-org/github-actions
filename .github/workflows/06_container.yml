@@ -41,7 +41,7 @@ jobs:
           entrypoint: /bin/echo
           args: "Hello World"
       - name: Log nnode version
-        uses: docker://node:112.22.10-alpine3.14
+        uses: docker://node:12.22.10-alpine3.14
         with:
           entrypoint: /usr/local/bin/node
           args: -v
