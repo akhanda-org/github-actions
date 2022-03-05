@@ -12,7 +12,7 @@ jobs:
         run: |
           node -v
           cat /etc/os-release
-  node-multiple-containers: #2.
+  node-multiple-containers: #2.Using Multiple containers
     runs-on: ubuntu-latest
     services:
       app:
@@ -28,3 +28,20 @@ jobs:
         run: " curl -X POST http://localhost:3001/api/user -H 'Content-Type: application/json' -d '{\"username\": \"hello\", \"address\": \"dwed\"}' "
       - name: Get Users
         run: curl http://localhost:3001/api/users
+  container-in-steps: #3. Using Containers inside step
+    runs-on: ubuntu-latest
+    container:
+      image: node:17-alpine3.14
+    steps:
+      - name: Log Container nobe version
+        run: node -v
+      - name: Step with Docker
+        uses: docker://node:12.4.1-alpine3.10
+        with:
+          entrypoint: /bin/echo
+          args: "Hello World"
+      - name: Log nnode version
+        uses: docker://node:12.4.1-alpine3.10
+        with:
+          entrypoint: /usr/local/bin/node
+          args: -v
