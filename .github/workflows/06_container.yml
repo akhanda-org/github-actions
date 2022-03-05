@@ -45,6 +45,7 @@ jobs:
         with:
           entrypoint: /usr/local/bin/node
           args: -v
+      - uses: actions/checkout@v1
       - name: Run ascript  #4. 
         uses: docker://node:12.22.10-alpine3.14
         with:
