@@ -45,3 +45,8 @@ jobs:
         with:
           entrypoint: /usr/local/bin/node
           args: -v
+      - name: Run ascript  #4. 
+        uses: docker://node:12.22.10-alpine3.14
+        with:
+          entrypoint: ./script.sh
+          args: "Some String"
