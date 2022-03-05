@@ -3,7 +3,7 @@ name: Container
 on: [push]
 
 jobs:
-  node-container:
+  node-container: # 1. trigger Docker container on ubuntu-latest using container image
     runs-on: ubuntu-latest
     container:
         image: node:17-alpine3.14
@@ -12,3 +12,19 @@ jobs:
         run: |
           node -v
           cat /etc/os-release
+  node-multiple-containers: #2.
+    runs-on: ubuntu-latest
+    services:
+      app:
+        image: alialaa17/node-api
+        ports:
+          - 3001:3000
+      mongo:
+        image: mongo
+        ports:
+          - 27017:27017
+    steps:
+      - name: Post a User
+        run: " curl -X POST http://localhost:3001/api/user -H 'Content-Type: application/json' -d '{\"username\": \"hello\", \"address\": \"dwed\"}' "
+      - name: Get Users
+        run: curl http://localhost:3001/api/users
